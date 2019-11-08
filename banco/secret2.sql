@@ -34,7 +34,7 @@ DEFAULT CHARACTER SET = latin1;
 
 
 CREATE TABLE IF NOT EXISTS `secret`.`comentario` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL auto_increment,
   `texto` TEXT NOT NULL,
   `datahora` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `username` VARCHAR(250) NOT NULL,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `secret`.`notificacao` (
-  `idnotificacao` INT NOT NULL,
+  `idnotificacao` INT NOT NULL auto_increment,
   `mensagem` VARCHAR(400) NOT NULL,
   `tipo` CHAR(1) NOT NULL,
   `lida` CHAR(1) NOT NULL DEFAULT 'N',
