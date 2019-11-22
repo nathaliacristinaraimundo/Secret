@@ -8,10 +8,25 @@
 			$usuario, $senha,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")) ;
 		return $conexao;
 	}
+
+	function criarConta($username, $senha)
+	{
+		$conexao = criarConexao();
+		$sql = "INSERT INTO `secret`.`usuario`(`username`,`senha`)VALUES (?, ?)";
+		$comando = $conexao->prepare($sql);
+		return $comando->execute(
+				[
+					$username,
+					$senha
+				]
+			);
+		 
+	}
+
 	function buscarFeed($username)
 	{
 		$conexao = criarConexao();
-		$sql = "SELECT texto,id from secret S inner join seguidor SS on S.username=SS.seguindo where SS.username=?";
+		$sql = "SELECT distinct texto,id from secret S inner join seguidor SS on S.username=SS.seguindo where SS.username=?";
 		$comando = $conexao->prepare($sql);
 		$comando->execute(
 				[
@@ -44,5 +59,46 @@
 			);
 		return $comando->fetchAll();
 	}
+	function publicarSegredo($texto, $cor_fundo ,$cor_texto, $username)
+	{
+		$conexao = criarConexao();
+		$sql = "INSERT INTO `secret`.`secret`(`id`,`texto`,`cor_fundo`,`cor_texto`,`username`) VALUES(NULL, ?, ?, ?, ?)";
+		$comando = $conexao->prepare($sql);
+		return $comando->execute(
+				[
+					$texto,
+					$cor_fundo,
+					$cor_texto, 
+					$username
+				]
+			);
+	}
+	function publicarComentario($texto, $username, $secret_id)
+	{
+		$conexao = criarConexao();
+		$sql = "INSERT INTO `secret`.`comentario`(`id`,`texto`,`datahora`,`username`,`secret_id`) VALUES(NULL, ?, NULL, ?, ?)";
+		$comando = $conexao->prepare($sql);
+		return $comando->execute(
+				[
+					$texto,
+					$username,
+					$secret_id
+					
+				]
+			);
+	}
+
+	function excluirComentario($id)
+		{
+			$conexao = criarConexao();
+			$sql = "DELETE FROM comentario WHERE id = ?";
+			$comando = $conexao->prepare($sql);
+			return $comando->execute(
+					[
+						$id	
+					]
+				);
+	}
+
 
 ?>

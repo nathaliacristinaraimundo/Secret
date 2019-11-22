@@ -1,8 +1,12 @@
 <?php
 	require ('funcoes.php');
-	$segredos = buscarFeed('isabela');	
+	//$segredos = publicarSegredo('Uma vez fingi que desmaiei', 'black', 'white', 'isabela');
+	$segredos = buscarFeed('dbconrado');	
+	//$comentarios = publicarComentario('todicara','isabela',10);
+	//$comentarios = excluirComentario(28);
 	$comentarios = buscarComentarios(10); 
-	$pessoas = buscarPessoas('liv'); 
+	$pessoas = buscarPessoas('thiago');
+	//$pessoas = criarConta('thiago', 'abc123');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,7 @@
 			<?=$s['texto']?>
 		</p>
 		
-	<?php endforeach; ?>	
+	<?php endforeach; ?>	 
 
 	<?php foreach ($comentarios as $c ): ?>
 		<p>
@@ -27,6 +31,7 @@
 		<p>
 			<?=$p['username']?>
 		</p>
-	<?php endforeach; ?>	
+	<?php endforeach; ?>
+
 </body>
 </html>

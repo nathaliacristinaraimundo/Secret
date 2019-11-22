@@ -56,7 +56,7 @@ VALUES
 (NULL,'minha situação tá pior/ele não te merece',NULL,'liviacorlaite',9),
 (NULL,'MEUS OLHOS QUEIMÃO',NULL,'_natcrm',6);
 
-select texto,datahora from comentario where secret_id=10;
+select texto,datahora, secret_id, id from comentario;
 
 select texto,datahora from comentario where secret_id=9;
 
