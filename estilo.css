@@ -1,0 +1,37 @@
+html{
+	font-family: 'Noto Sans TC', sans-serif;
+	color: BLACK;
+	margin: 0;
+}
+main{
+	background: white;
+}
+header{
+	background: #4c0cc4;
+	margin: 0;
+}
+nav{
+	background: #4c0cc4;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+body{
+	margin: 0;
+	height: 100vh;
+}
+h1{
+	margin: 0;
+	color: white;
+}
+.secret{
+	padding: 1rem;
+}
+.texto{
+	background: #FF7F50;
+	padding: 1rem;
+	border-radius: 10px;
+}
+a{
+	color: white;
+}
