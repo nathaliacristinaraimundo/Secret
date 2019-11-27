@@ -22,6 +22,48 @@
 			);
 		 
 	}
+	function excluirConta($username, $senha)
+	{
+		$conexao = criarConexao();
+		$sql = "DELETE FROM usuario WHERE username =? and senha= ?";
+		$comando = $conexao->prepare($sql);
+		return $comando->execute(
+				[
+					$username,
+					$senha
+				]
+			);
+	}
+	function fazerLogin($username, $senha)
+	{
+		$conexao = criarConexao();
+		$sql = "SELECT username from usuario where username=? and senha=?";
+		
+		$comando = $conexao->prepare($sql);
+		$comando->execute(
+				[
+					$username,
+					$senha
+				]
+			);
+		if($comando->rowCount()==0)
+		{
+			return false;
+		}
+		else
+		{
+			$_SESSION['username']=$username;
+			return true;
+		}
+	}
+
+	function usuarioLogado()
+	{
+		if(empty($_SESSION['username']))
+			return false;
+		else 
+			return $_SESSION['username'];
+	}
 
 	function buscarFeed($username)
 	{
