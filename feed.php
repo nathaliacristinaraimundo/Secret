@@ -38,6 +38,7 @@
 <body>
 	<header>
     <h1>Secret</h1> 
+    <img id="logo" src="logo.png" width="26px" height= "38px">
   </header>
   <main>
     <?php 
